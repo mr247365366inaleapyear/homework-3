@@ -12,6 +12,24 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
+};
+
+//Function that determines length of password
+function determineLength(){
+  passwordLength = prompt("Choose number of characters to use for password (between 8-128 characters): ");
+  if (passwordLength<8){
+    alert("Not enough characters for password, needs to be at least 8 characters and no more than 128");
+    determineLength();
+  }else if (passwordLength>128){
+    alert("Too many characters for password, needs to be at least 8 characters and no more than 128");
+    determineLength();
+  }else if (isNaN(passwordLength)){
+    alert("Password must be between 8-128 characters");
+    determineLength();
+  }else{
+    alert("What types of characters you would like to be included in your password. If you choose 'No' for all, your password will only contain lowercase letters.");
+  }
+  return passwordLength;
 }
 
 // Add event listener to generate button
