@@ -14,7 +14,7 @@ function writePassword() {
   passwordText.value = password;
 };
 
-//Function that determines length of password
+//Function that determines type of password
 function determineLength(){
   passwordLength = prompt("Choose number of characters to use for password (between 8-128 characters): ");
   if (passwordLength<8){
@@ -27,7 +27,7 @@ function determineLength(){
     alert("Password must be between 8-128 characters");
     determineLength();
   }else{
-    alert("What types of characters you would like to be included in your password. If you choose 'No' for all, your password will only contain lowercase letters.");
+    alert("What types of characters you would like to be included in your password.");
   }
   return passwordLength;
 }
