@@ -1,18 +1,18 @@
-var generateBtn = document.querySelector("#generate");
-var lowercaseChar = "abcdefghijklmnopqrstuvwxyz";
-var uppercaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var numberChar = "0123456789";
-var specialChar = "!@#$%^&*()_+-=[]{};':`~,./<>?|";
-var passwordLength;
+const generateBtn = document.querySelector("#generate");
+const lowercaseChar = "abcdefghijklmnopqrstuvwxyz";
+const uppercaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const numberChar = "0123456789";
+const specialChar = "!@#$%^&*()_+-=[]{};':`~,./<>?|";
+const passwordLength;
 
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+writePassword = () => {
+  const password = generatePassword();
+  const passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-}
+};
 
-function determineLength() {
+determineLength = () => {
   passwordLength = prompt(
     "Choose number of characters to use for password (between 8-128 characters): "
   );
@@ -35,8 +35,8 @@ function determineLength() {
     );
   }
   return passwordLength;
-}
-function determineUppercase() {
+};
+determineUppercase = () => {
   uppercaseCheck = prompt(
     "Do you want to include uppercase letters in your password? \n(Yes or No)"
   );
@@ -56,8 +56,8 @@ function determineUppercase() {
     determineUppercase();
   }
   return uppercaseCheck;
-}
-function determineNumbers() {
+};
+determineNumbers = () => {
   numberCheck = prompt(
     "Do you want to include numbers in your password? \n(Yes or No)"
   );
@@ -77,8 +77,8 @@ function determineNumbers() {
     determineNumbers();
   }
   return numberCheck;
-}
-function determineSpecial() {
+};
+determineSpecial = () => {
   specialCheck = prompt(
     "Do you want to include special characters in your password? \n(Yes or No)"
   );
@@ -98,8 +98,8 @@ function determineSpecial() {
     determineSpecial();
   }
   return specialCheck;
-}
-function generatePassword() {
+};
+generatePassword = () => {
   determineLength();
   console.log(passwordLength);
   determineUppercase();
@@ -109,8 +109,8 @@ function generatePassword() {
   determineSpecial();
   console.log(specialCheck);
 
-  var characters = lowercaseChar;
-  var password = "";
+  const characters = lowercaseChar;
+  const password = "";
   if (uppercaseCheck && numberCheck && specialCheck) {
     characters += uppercaseChar + numberChar + specialChar;
   } else if (uppercaseCheck && numberCheck) {
@@ -129,12 +129,12 @@ function generatePassword() {
     characters === lowercaseChar;
   }
 
-  for (var i = 0; i < passwordLength; i++) {
+  for (const i = 0; i < passwordLength; i++) {
     password += characters.charAt(
       Math.floor(Math.random() * characters.length)
     );
   }
   return password;
-}
+};
 
 generateBtn.addEventListener("click", writePassword);
